@@ -1,0 +1,94 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000023d86476870 .scope module, "fullsubtractor_test" "fullsubtractor_test" 2 10;
+ .timescale 0 0;
+v0000023d864cde40_0 .net "Borr", 0 0, L_0000023d86477550;  1 drivers
+v0000023d864cd940_0 .net "Diff", 0 0, L_0000023d86477320;  1 drivers
+v0000023d864cdd00_0 .var "InBorr", 0 0;
+v0000023d864cdda0_0 .var "input1", 0 0;
+v0000023d864cd9e0_0 .var "input2", 0 0;
+S_0000023d86476a00 .scope module, "ha" "fullsubtractor_dataflow" 2 22, 2 1 0, S_0000023d86476870;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "Diff";
+    .port_info 1 /OUTPUT 1 "Borr";
+    .port_info 2 /INPUT 1 "input1";
+    .port_info 3 /INPUT 1 "input2";
+    .port_info 4 /INPUT 1 "InBorr";
+L_0000023d86477080 .functor XOR 1, v0000023d864cdda0_0, v0000023d864cd9e0_0, C4<0>, C4<0>;
+L_0000023d86477320 .functor XOR 1, L_0000023d86477080, v0000023d864cdd00_0, C4<0>, C4<0>;
+L_0000023d864770f0 .functor NOT 1, v0000023d864cdda0_0, C4<0>, C4<0>, C4<0>;
+L_0000023d86477400 .functor AND 1, L_0000023d864770f0, v0000023d864cd9e0_0, C4<1>, C4<1>;
+L_0000023d86477470 .functor XOR 1, v0000023d864cdda0_0, v0000023d864cd9e0_0, C4<0>, C4<0>;
+L_0000023d86476fa0 .functor NOT 1, L_0000023d86477470, C4<0>, C4<0>, C4<0>;
+L_0000023d864774e0 .functor AND 1, L_0000023d86476fa0, v0000023d864cdd00_0, C4<1>, C4<1>;
+L_0000023d86477550 .functor OR 1, L_0000023d86477400, L_0000023d864774e0, C4<0>, C4<0>;
+v0000023d8633bc60_0 .net "Borr", 0 0, L_0000023d86477550;  alias, 1 drivers
+v0000023d8633bd00_0 .net "Diff", 0 0, L_0000023d86477320;  alias, 1 drivers
+v0000023d86452510_0 .net "InBorr", 0 0, v0000023d864cdd00_0;  1 drivers
+v0000023d864525b0_0 .net *"_ivl_0", 0 0, L_0000023d86477080;  1 drivers
+v0000023d86452650_0 .net *"_ivl_10", 0 0, L_0000023d86476fa0;  1 drivers
+v0000023d864526f0_0 .net *"_ivl_12", 0 0, L_0000023d864774e0;  1 drivers
+v0000023d86452790_0 .net *"_ivl_4", 0 0, L_0000023d864770f0;  1 drivers
+v0000023d86452830_0 .net *"_ivl_6", 0 0, L_0000023d86477400;  1 drivers
+v0000023d864528d0_0 .net *"_ivl_8", 0 0, L_0000023d86477470;  1 drivers
+v0000023d864cd8a0_0 .net "input1", 0 0, v0000023d864cdda0_0;  1 drivers
+v0000023d864cda80_0 .net "input2", 0 0, v0000023d864cd9e0_0;  1 drivers
+    .scope S_0000023d86476870;
+T_0 ;
+    %pushi/vec4 0, 0, 3;
+    %split/vec4 1;
+    %store/vec4 v0000023d864cdd00_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v0000023d864cd9e0_0, 0, 1;
+    %store/vec4 v0000023d864cdda0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0000023d86476870;
+T_1 ;
+    %delay 4, 0;
+    %load/vec4 v0000023d864cdda0_0;
+    %addi 1, 0, 1;
+    %store/vec4 v0000023d864cdda0_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0000023d86476870;
+T_2 ;
+    %delay 2, 0;
+    %load/vec4 v0000023d864cd9e0_0;
+    %addi 1, 0, 1;
+    %store/vec4 v0000023d864cd9e0_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0000023d86476870;
+T_3 ;
+    %delay 1, 0;
+    %load/vec4 v0000023d864cdd00_0;
+    %addi 1, 0, 1;
+    %store/vec4 v0000023d864cdd00_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0000023d86476870;
+T_4 ;
+    %vpi_call 2 34 "$dumpfile", "fullsubtractor_dataflow.vcd" {0 0 0};
+    %vpi_call 2 35 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000023d86476870 {0 0 0};
+    %vpi_call 2 36 "$monitor", "time=%g,Diff =%b,Borr =%b, input1=%b, input2=%b, InBorra=%b", $time, v0000023d864cd940_0, v0000023d864cde40_0, v0000023d864cdda0_0, v0000023d864cd9e0_0, v0000023d864cdd00_0 {0 0 0};
+    %end;
+    .thread T_4;
+    .scope S_0000023d86476870;
+T_5 ;
+    %delay 20, 0;
+    %vpi_call 2 39 "$finish" {0 0 0};
+    %end;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "fullsubtractor_dataflow.v";
