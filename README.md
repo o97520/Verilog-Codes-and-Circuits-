@@ -3,4 +3,4 @@ Verilog Codes and Circuits
 
 ![alt text](fullsubtractor_dataflow/fullsubtractor_dataflow.png "fullsubtractor")
 
-^ fullsubtractor
+^ fullsubtractor example
