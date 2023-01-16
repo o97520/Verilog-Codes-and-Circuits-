@@ -1,0 +1,69 @@
+$date
+	Sat Jan 07 01:27:40 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module encoder_8to3_test $end
+$var wire 3 ! out [2:0] $end
+$var reg 8 " input1 [7:0] $end
+$scope module enc $end
+$var wire 8 # input1 [7:0] $end
+$var reg 3 $ out [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx $
+b0 #
+b0 "
+bx !
+$end
+#1000
+b0 !
+b0 $
+b1 "
+b1 #
+#2000
+b1 !
+b1 $
+b10 "
+b10 #
+#3000
+b10 !
+b10 $
+b100 "
+b100 #
+#4000
+b11 !
+b11 $
+b1000 "
+b1000 #
+#5000
+b100 !
+b100 $
+b10000 "
+b10000 #
+#6000
+b101 !
+b101 $
+b100000 "
+b100000 #
+#7000
+b110 !
+b110 $
+b1000000 "
+b1000000 #
+#8000
+b111 !
+b111 $
+b10000000 "
+b10000000 #
+#32000

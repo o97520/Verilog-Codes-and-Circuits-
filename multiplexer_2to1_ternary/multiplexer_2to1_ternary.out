@@ -1,0 +1,71 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000020df6f99570 .scope module, "multiplexer_2to1_ternary_test" "multiplexer_2to1_ternary_test" 2 16;
+ .timescale 0 0;
+v0000020df6f9bb30_0 .var "input1", 1 0;
+v0000020df6f9bbd0_0 .net "out", 0 0, L_0000020df70d2650;  1 drivers
+v0000020df6f9bc70_0 .var "select", 0 0;
+S_0000020df6f99b70 .scope module, "mp" "multiplexer_2to1_ternary" 2 26, 2 3 0, S_0000020df6f99570;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "out";
+    .port_info 1 /INPUT 2 "input1";
+    .port_info 2 /INPUT 1 "select";
+v0000020df6f99700_0 .net *"_ivl_1", 0 0, L_0000020df70d2510;  1 drivers
+v0000020df6f99d00_0 .net *"_ivl_3", 0 0, L_0000020df70d25b0;  1 drivers
+v0000020df6f99da0_0 .net "input1", 1 0, v0000020df6f9bb30_0;  1 drivers
+v0000020df6f9b9f0_0 .net "out", 0 0, L_0000020df70d2650;  alias, 1 drivers
+v0000020df6f9ba90_0 .net "select", 0 0, v0000020df6f9bc70_0;  1 drivers
+L_0000020df70d2510 .part v0000020df6f9bb30_0, 1, 1;
+L_0000020df70d25b0 .part v0000020df6f9bb30_0, 0, 1;
+L_0000020df70d2650 .functor MUXZ 1, L_0000020df70d25b0, L_0000020df70d2510, v0000020df6f9bc70_0, C4<>;
+    .scope S_0000020df6f99570;
+T_0 ;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v0000020df6f9bb30_0, 0, 2;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020df6f9bc70_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0000020df6f99570;
+T_1 ;
+    %delay 1, 0;
+    %load/vec4 v0000020df6f9bb30_0;
+    %addi 1, 0, 2;
+    %store/vec4 v0000020df6f9bb30_0, 0, 2;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0000020df6f99570;
+T_2 ;
+    %delay 2, 0;
+    %load/vec4 v0000020df6f9bc70_0;
+    %pad/u 2;
+    %addi 1, 0, 2;
+    %pad/u 1;
+    %store/vec4 v0000020df6f9bc70_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0000020df6f99570;
+T_3 ;
+    %vpi_call 2 37 "$dumpfile", "multiplexer_2to1_ternary.vcd" {0 0 0};
+    %vpi_call 2 38 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000020df6f99570 {0 0 0};
+    %vpi_call 2 39 "$monitor", "time=%g,out =%b,a=%b,b=%b", $time, v0000020df6f9bbd0_0, v0000020df6f9bb30_0, v0000020df6f9bc70_0 {0 0 0};
+    %end;
+    .thread T_3;
+    .scope S_0000020df6f99570;
+T_4 ;
+    %delay 20, 0;
+    %vpi_call 2 41 "$finish" {0 0 0};
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "multiplexer_2to1_ternary.v";

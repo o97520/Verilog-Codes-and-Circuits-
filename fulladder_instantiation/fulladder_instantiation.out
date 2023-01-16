@@ -1,0 +1,108 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000197517b6320 .scope module, "fulladder_instantiation_test" "fulladder_instantiation_test" 2 30;
+ .timescale 0 0;
+v000001975180f7a0_0 .net "carry", 0 0, L_000001975180fdf0;  1 drivers
+v000001975180e940_0 .var "input1", 0 0;
+v000001975180f0c0_0 .var "input2", 0 0;
+v000001975180f160_0 .var "input3", 0 0;
+v000001975180f700_0 .net "sum", 0 0, L_000001975180fa70;  1 drivers
+S_00000197517b64b0 .scope module, "ha" "fulladder_instantiation" 2 42, 2 1 0, S_00000197517b6320;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "sum";
+    .port_info 1 /OUTPUT 1 "carry";
+    .port_info 2 /INPUT 1 "input1";
+    .port_info 3 /INPUT 1 "input2";
+    .port_info 4 /INPUT 1 "input3";
+L_000001975180fdf0 .functor OR 1, L_000001975180ff40, L_000001975180ffb0, C4<0>, C4<0>;
+v00000197517925b0_0 .net "carry", 0 0, L_000001975180fdf0;  alias, 1 drivers
+v0000019751792650_0 .net "carry1", 0 0, L_000001975180ffb0;  1 drivers
+v00000197517926f0_0 .net "carry2", 0 0, L_000001975180ff40;  1 drivers
+v0000019751792790_0 .net "input1", 0 0, v000001975180e940_0;  1 drivers
+v000001975180eb20_0 .net "input2", 0 0, v000001975180f0c0_0;  1 drivers
+v000001975180ee40_0 .net "input3", 0 0, v000001975180f160_0;  1 drivers
+v000001975180ebc0_0 .net "sum", 0 0, L_000001975180fa70;  alias, 1 drivers
+v000001975180f3e0_0 .net "sum1", 0 0, L_000001975180fc30;  1 drivers
+S_00000197517c6700 .scope module, "ha1" "halfadder_dataflow" 2 8, 2 20 0, S_00000197517b64b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "sumha";
+    .port_info 1 /OUTPUT 1 "carryha";
+    .port_info 2 /INPUT 1 "input1ha";
+    .port_info 3 /INPUT 1 "input2ha";
+L_000001975180fc30 .functor XOR 1, v000001975180e940_0, v000001975180f0c0_0, C4<0>, C4<0>;
+L_000001975180ffb0 .functor AND 1, v000001975180e940_0, v000001975180f0c0_0, C4<1>, C4<1>;
+v00000197517c6890_0 .net "carryha", 0 0, L_000001975180ffb0;  alias, 1 drivers
+v00000197517c6930_0 .net "input1ha", 0 0, v000001975180e940_0;  alias, 1 drivers
+v00000197517c69d0_0 .net "input2ha", 0 0, v000001975180f0c0_0;  alias, 1 drivers
+v00000197517c6a70_0 .net "sumha", 0 0, L_000001975180fc30;  alias, 1 drivers
+S_00000197517c44b0 .scope module, "ha2" "halfadder_dataflow" 2 9, 2 20 0, S_00000197517b64b0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "sumha";
+    .port_info 1 /OUTPUT 1 "carryha";
+    .port_info 2 /INPUT 1 "input1ha";
+    .port_info 3 /INPUT 1 "input2ha";
+L_000001975180fa70 .functor XOR 1, L_000001975180fc30, v000001975180f160_0, C4<0>, C4<0>;
+L_000001975180ff40 .functor AND 1, L_000001975180fc30, v000001975180f160_0, C4<1>, C4<1>;
+v00000197517c4640_0 .net "carryha", 0 0, L_000001975180ff40;  alias, 1 drivers
+v00000197517c46e0_0 .net "input1ha", 0 0, L_000001975180fc30;  alias, 1 drivers
+v00000197517c4780_0 .net "input2ha", 0 0, v000001975180f160_0;  alias, 1 drivers
+v0000019751792510_0 .net "sumha", 0 0, L_000001975180fa70;  alias, 1 drivers
+    .scope S_00000197517b6320;
+T_0 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001975180e940_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001975180f0c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001975180f160_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00000197517b6320;
+T_1 ;
+    %delay 2, 0;
+    %load/vec4 v000001975180e940_0;
+    %addi 1, 0, 1;
+    %store/vec4 v000001975180e940_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00000197517b6320;
+T_2 ;
+    %delay 3, 0;
+    %load/vec4 v000001975180f0c0_0;
+    %addi 1, 0, 1;
+    %store/vec4 v000001975180f0c0_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_00000197517b6320;
+T_3 ;
+    %delay 4, 0;
+    %load/vec4 v000001975180f160_0;
+    %addi 1, 0, 1;
+    %store/vec4 v000001975180f160_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00000197517b6320;
+T_4 ;
+    %vpi_call 2 57 "$dumpfile", "fulladder_instantiation.vcd" {0 0 0};
+    %vpi_call 2 58 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000197517b6320 {0 0 0};
+    %vpi_call 2 59 "$monitor", "time=%g,sum =%b,carry =%b,a=%b,b=%b,c=%b", $time, v000001975180f700_0, v000001975180f7a0_0, v000001975180e940_0, v000001975180f0c0_0, v000001975180f160_0 {0 0 0};
+    %end;
+    .thread T_4;
+    .scope S_00000197517b6320;
+T_5 ;
+    %delay 100, 0;
+    %vpi_call 2 61 "$finish" {0 0 0};
+    %end;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "fulladder_instantiation.v";
